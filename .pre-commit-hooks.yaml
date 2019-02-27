@@ -1,0 +1,6 @@
+-   id: prettier-standard
+    name: prettier-standard
+    description: prettier and standard brought together
+    entry: prettier-standard
+    language: node
+    types: [js]
