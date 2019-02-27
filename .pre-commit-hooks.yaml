@@ -3,4 +3,5 @@
     description: prettier and standard brought together
     entry: prettier-standard
     language: node
-    types: [js]
+    files: \.js$
+    args: []
