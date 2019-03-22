@@ -1,14 +1,7 @@
-# TM Coding Style
+# Thinking Machines Coding Style
 
 We use [pre-commit](https://pre-commit.com) to enforce uniform coding style for everyone
 in Thinking Machines.
-
-## Dependencies
-
-- black
-- flake8
-- isort
-- prettier
 
 ## Installation
 
@@ -29,26 +22,29 @@ $ pre-commit --version
 Create a `.pre-commit-config.yaml` file in your repo's root with the following contents
 depending on the language you are using.
 
+```yaml
+repos:
+- repo: https://github.com/thinkingmachines/coding-style
+  rev: master
+  hooks: ...
+```
+
+Add hooks depending on the languages you are using.
+
+## Available hooks
+
 ### Python
 
 ```yaml
-repos:
--   repo: https://github.com/thinkingmachines/coding-style
-    rev: master
-    hooks:
-    - id: black
-    - id: flake8
-    - id: isort
+  - id: black
+  - id: flake8
+  - id: isort
 ```
 
 ### JavaScript
 
 ```yaml
-repos:
--   repo: https://github.com/thinkingmachines/coding-style
-    rev: master
-    hooks:
-    - id: prettier-standard
+  - id: prettier-standard
 ```
 
 ## Contributing
@@ -64,4 +60,4 @@ hooks to enforce or a review of our current hooks.
 
 ## License
 
-MIT License (c) Thinking Machines Data Science, 2019
+MIT License (c) 2019 Thinking Machines Data Science
