@@ -4,6 +4,7 @@
     entry: prettier-standard
     language: node
     files: \.js$
+    exclude: ^build/
 -   id: black
     name: black
     description: 'Black: The uncompromising Python code formatter'
@@ -12,12 +13,14 @@
     language_version: python3
     require_serial: true
     types: [python]
+    exclude: ^migrations/
 -   id: flake8
     name: flake8
     description: '`flake8` is a command-line utility for enforcing style consistency across Python projects.'
     entry: flake8
     language: python
     types: [python]
+    exclude: ^migrations/
     require_serial: true
 -   id: isort
     name: isort
@@ -25,3 +28,4 @@
     entry: isort
     language: python
     types: [python]
+    exclude: ^migrations/
