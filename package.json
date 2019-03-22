@@ -1,12 +1,14 @@
 {
-  "name": "pre-commit-hooks",
+  "name": "tm-coding-style",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Thinking Machines Coding Style",
+  "bin": {
+    "prettier-standard": "node_modules/prettier-standard/src/cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "engineering@thinkingmachin.es",
   "license": "MIT",
   "dependencies": {
     "prettier-standard": "^9.1.1"
