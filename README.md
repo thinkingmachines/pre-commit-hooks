@@ -16,6 +16,8 @@ repos:
     rev: master
     hooks:
     - id: black
+    - id: flake8
+    - id: isort
 ```
 
 ### JavaScript

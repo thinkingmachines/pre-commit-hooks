@@ -2,6 +2,7 @@ from setuptools import setup
 
 requirements = [
     "black",
+    "flake8",
     "isort",
 ]
 
