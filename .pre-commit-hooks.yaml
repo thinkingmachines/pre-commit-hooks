@@ -25,3 +25,9 @@
     entry: isort
     language: python
     types: [python]
+-   id: gofmt
+    name: gofmt
+    description: 'Automatically formats Go source code. Go needs to be installed'
+    entry: gofmt -l -w
+    language: golang
+    types: [go]
