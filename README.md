@@ -47,6 +47,12 @@ Add hooks depending on the languages you are using.
   - id: prettier-standard
 ```
 
+### Go
+
+```yaml
+  - id: gofmt
+```
+
 ## Contributing and Developing
 
 To contribute, simply clone this repository:
