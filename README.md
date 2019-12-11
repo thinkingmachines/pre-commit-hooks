@@ -41,6 +41,9 @@ Add hooks depending on the languages you are using.
   - id: isort
 ```
 
+These 3 hooks default configuration conflict with each other. A simple configuration that works can be
+found in `config/`. Copy `config/.isort.cfg` and `config/.flake8` to the root of your repo to get
+these hooks working together.
 ### JavaScript
 
 ```yaml
