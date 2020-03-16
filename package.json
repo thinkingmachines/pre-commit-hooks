@@ -11,6 +11,7 @@
   "author": "engineering@thinkingmachin.es",
   "license": "MIT",
   "dependencies": {
-    "prettier-standard": "^16.2.1"
+    "prettier-standard": "^16.2.1",
+    "typescript": "^3.8.3"
   }
 }
