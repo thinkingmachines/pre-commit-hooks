@@ -11,6 +11,6 @@
   "author": "engineering@thinkingmachin.es",
   "license": "MIT",
   "dependencies": {
-    "prettier-standard": "^9.1.1"
+    "prettier-standard": "^16.2.1"
   }
 }
