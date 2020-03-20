@@ -56,6 +56,36 @@ these hooks working together.
   - id: gofmt
 ```
 
+## Setting Github Actions
+
+You can set up Github Action to check new pull requests follow the coding style by
+creating a `.github/workflows/pre-commit.yaml` file in your repo's root with the following content:
+```
+name: pre-commit-checks
+on: [pull_request]
+jobs:
+  pre-commit-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+      - name: Install dependencies
+        run: python -m pip install --upgrade pre-commit 
+      - name: Cache pre-commit
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-1|${{ hashFiles('.pre-commit-config.yaml') }}
+      - name: Run Pre-commit
+        run: pre-commit run --all-files --source origin/master --origin HEAD
+```
+
+The code snippet can also be found [here](https://github.com/thinkingmachines/gh-actions/blob/master/.github/workflows/pre-commit.yaml)
+
+
 ## Contributing and Developing
 
 To contribute, simply clone this repository:
