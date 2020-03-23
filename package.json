@@ -1,6 +1,6 @@
 {
   "name": "tm-coding-style",
-  "version": "1.0.0",
+  "version": "2020.03.23",
   "description": "Thinking Machines Coding Style",
   "bin": {
     "prettier-standard": "node_modules/prettier-standard/src/cli.js"
@@ -11,7 +11,7 @@
   "author": "engineering@thinkingmachin.es",
   "license": "MIT",
   "dependencies": {
-    "prettier-standard": "^16.2.1",
-    "typescript": "^3.8.3"
+    "prettier-standard": "16.2.1",
+    "typescript": "3.8.3"
   }
 }

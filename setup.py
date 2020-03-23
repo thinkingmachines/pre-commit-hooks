@@ -1,15 +1,15 @@
 from setuptools import setup
 
 requirements = [
-    "black",
-    "flake8",
-    "isort",
+    "black==19.10b0",
+    "flake8==3.7.9",
+    "isort==4.3.21",
 ]
 
 if __name__ == "__main__":
     setup(
         name="tm-coding-style",
-        version="0.0.1",
+        version="2020.03.23",
         description="Thinking Machines Coding Style",
         install_requires=requirements,
     )
