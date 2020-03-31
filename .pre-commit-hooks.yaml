@@ -4,6 +4,12 @@
   entry: prettier-standard
   language: node
   files: (?i)\.(json|js|jsx|ts|tsx)$
+- id: eslint
+  name: eslint
+  description: 'Find and fix problems in your JavaScript code.'
+  entry: eslint --fix
+  language: node
+  files: (?i)\.(json|js|jsx|ts|tsx)$
 - id: black
   name: black
   description: 'Black: The uncompromising Python code formatter'
