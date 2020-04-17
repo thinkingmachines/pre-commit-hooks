@@ -7,7 +7,7 @@
 - id: eslint
   name: eslint
   description: 'Find and fix problems in your JavaScript code.'
-  entry: eslint --fix
+  entry: eslint
   language: node
   files: (?i)\.(json|js|jsx|ts|tsx)$
 - id: black
