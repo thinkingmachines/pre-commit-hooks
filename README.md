@@ -48,6 +48,7 @@ these hooks working together.
 
 ```yaml
   - id: prettier-standard
+  - id: eslint
 ```
 
 ### Go
@@ -73,7 +74,7 @@ jobs:
         with:
           python-version: 3.6
       - name: Install dependencies
-        run: python -m pip install --upgrade pre-commit 
+        run: python -m pip install --upgrade pre-commit
       - name: Cache pre-commit
         uses: actions/cache@v1
         with:
@@ -100,9 +101,10 @@ hooks to enforce or a review of our current hooks.
 You can test a new or existing hooks on an repo or file using the following command:
 ```
 pre-commit try-repo --verbose <PATH TO CODING-STYLE> <HOOK ID>  --files <FILE>
-# Using black 
+# Using black
 pre-commit try-repo --verbose ../coding-style black --files main.py
 ```
+
 ## License
 
-MIT License (c) 2019 Thinking Machines Data Science
+MIT License (c) 2020 Thinking Machines Data Science
