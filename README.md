@@ -86,6 +86,17 @@ jobs:
 
 The code snippet can also be found [here](https://github.com/thinkingmachines/gh-actions/blob/master/.github/workflows/pre-commit.yaml)
 
+## Release
+
+This project follows [Calender Versioning](https://calver.org/).
+
+Create a release by tagging a commit with the current date using the following format:
+
+`YYYY.MM.DD` (example `2020.01.01`)
+
+An additional patch segment can be added for hot fixes:
+
+`YYYY.MM.DD.PATCH` (example `2020.01.01.1`)
 
 ## Contributing and Developing
 
