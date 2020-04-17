@@ -9,7 +9,6 @@ requirements = [
 if __name__ == "__main__":
     setup(
         name="tm-coding-style",
-        version="2020.03.23",
         description="Thinking Machines Coding Style",
         install_requires=requirements,
     )

@@ -1,6 +1,5 @@
 {
   "name": "tm-coding-style",
-  "version": "2020.03.31",
   "description": "Thinking Machines Coding Style",
   "bin": {
     "prettier-standard": "node_modules/.bin/prettier-standard",
