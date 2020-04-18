@@ -51,6 +51,21 @@ these hooks working together.
   - id: eslint
 ```
 
+By default, `eslint` will not work with `prettier-standard`. A starting configuration that would work can be found
+in `config/`. Copy `config/.eslintrc` to the root of your repo and add some `addtional_dependencies` to the 
+ `.pre-commit-config.yaml` file.
+
+```
+  - id: eslint
+    additional_dependencies:
+      - 'eslint-config-standard@14.1.0'
+      - 'eslint-config-prettier@6.10.1'
+      - 'eslint-plugin-import@2.20.0'
+      - 'eslint-plugin-node@11.0.0'
+      - 'eslint-plugin-promise@4.2.1'
+      - 'eslint-plugin-standard@4.0.1'
+```
+
 ### Go
 
 ```yaml
