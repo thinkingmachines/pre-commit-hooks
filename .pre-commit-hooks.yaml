@@ -31,6 +31,21 @@
   entry: isort
   language: python
   types: [python]
+- id: black-nb
+  name: black-nb
+  description: 'Black: The uncompromising Python code formatter for Jupyter notebooks'
+  entry: black-nb -l 88
+  language: python
+  language_version: python3
+  require_serial: true
+  files: (?i)\.ipynb$
+- id: flake8-nb
+  name: flake8-nb
+  description: '`flake8_nb` is a command-line utility for enforcing style consistency across jupyter notebooks.'
+  entry: flake8_nb
+  language: python
+  files: (?i)\.ipynb$
+  require_serial: true
 - id: gofmt
   name: gofmt
   description: 'Automatically formats Go source code. Go needs to be installed'
