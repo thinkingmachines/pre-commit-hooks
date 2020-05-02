@@ -44,6 +44,23 @@ Add hooks depending on the languages you are using.
 These 3 hooks default configuration conflict with each other. A simple configuration that works can be
 found in `config/`. Copy `config/.isort.cfg` and `config/.flake8` to the root of your repo to get
 these hooks working together.
+
+#### Notebook specific hooks
+
+You can add notebook specific hooks by using the following.
+
+```
+  - id: black-nb
+    additional_dependencies:
+      - 'black-nb==0.3.0'
+  - id: flake8-nb
+    additional_dependencies:
+      - 'flake8_nb==v0.1.4'
+```
+
+Similar to previous hooks, you can copy `config/.flake8_nb` to the root of your repo to get these
+hooks working together.
+
 ### JavaScript
 
 ```yaml
@@ -52,7 +69,7 @@ these hooks working together.
 ```
 
 By default, `eslint` will not work with `prettier-standard`. A starting configuration that would work can be found
-in `config/`. Copy `config/.eslintrc` to the root of your repo and add some `addtional_dependencies` to the 
+in `config/`. Copy `config/.eslintrc` to the root of your repo and add `additional_dependencies` to the 
  `.pre-commit-config.yaml` file.
 
 ```
