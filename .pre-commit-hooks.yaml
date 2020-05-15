@@ -34,7 +34,8 @@
 - id: black-nb
   name: black-nb
   description: 'Black: The uncompromising Python code formatter for Jupyter notebooks'
-  entry: black-nb -l 88
+  entry: black-nb
+  args: ['-l', '88']
   language: python
   language_version: python3
   require_serial: true
