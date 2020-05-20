@@ -1,10 +1,7 @@
 from setuptools import setup
 
-requirements = [
-    "black==19.10b0",
-    "flake8==3.7.9",
-    "isort==4.3.21",
-]
+with open("requirements.txt") as requriements_file:
+    requirements = requriements_file.read().split("\n")
 
 if __name__ == "__main__":
     setup(
