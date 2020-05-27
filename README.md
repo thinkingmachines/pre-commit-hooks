@@ -5,15 +5,16 @@ in Thinking Machines.
 
 ## Installation
 
-First, install pre-commit into your system
+First, install pre-commit into your system. It is highly encourage you use python 3.6 or above
 
-```
+```sh
+$ pip install --upgrade pip
 $ pip install pre-commit
 ```
 
 Ensure that pre-commit has been installed correctly:
 
-```
+```sh
 $ pre-commit --version
 ```
 
@@ -49,7 +50,7 @@ these hooks working together.
 
 You can add notebook specific hooks by using the following.
 
-```
+```yaml
   - id: black-nb
     additional_dependencies:
       - 'black-nb==0.3.0'
@@ -69,10 +70,10 @@ hooks working together.
 ```
 
 By default, `eslint` will not work with `prettier-standard`. A starting configuration that would work can be found
-in `config/`. Copy `config/.eslintrc` to the root of your repo and add `additional_dependencies` to the 
- `.pre-commit-config.yaml` file.
+in `config/`. Copy `config/.eslintrc` to the root of your repo and add `additional_dependencies` to the
+`.pre-commit-config.yaml` file.
 
-```
+```yaml
   - id: eslint
     additional_dependencies:
       - 'eslint-config-standard@14.1.0'
@@ -93,7 +94,8 @@ in `config/`. Copy `config/.eslintrc` to the root of your repo and add `addition
 
 You can set up Github Action to check new pull requests follow the coding style by
 creating a `.github/workflows/pre-commit.yaml` file in your repo's root with the following content:
-```
+
+```yaml
 name: pre-commit-checks
 on: [pull_request]
 jobs:
@@ -105,15 +107,22 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.6
+      - uses: actions/cache@v2
+        name: Cache pip
+        with:
+          path: ~/.cache/pip
+          key: pre-commit-pip|${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Install dependencies
         run: python -m pip install --upgrade pre-commit
       - name: Cache pre-commit
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.cache/pre-commit
-          key: pre-commit-1|${{ hashFiles('.pre-commit-config.yaml') }}
+          key: pre-commit-files|${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run Pre-commit
-        run: pre-commit run --all-files --source origin/master --origin HEAD
+        run: pre-commit run --all-files --source origin/$BASE_BRANCH --origin HEAD
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
 ```
 
 The code snippet can also be found [here](https://github.com/thinkingmachines/gh-actions/blob/master/.github/workflows/pre-commit.yaml)
@@ -134,7 +143,7 @@ An additional patch segment can be added for hot fixes:
 
 To contribute, simply clone this repository:
 
-```
+```sh
 $ git clone git@github.com:thinkingmachines/coding-style.git
 ```
 
@@ -142,10 +151,11 @@ and create a new branch. We would appreciate suggestions for new pre-commit
 hooks to enforce or a review of our current hooks.
 
 You can test a new or existing hooks on an repo or file using the following command:
-```
-pre-commit try-repo --verbose <PATH TO CODING-STYLE> <HOOK ID>  --files <FILE>
+
+```sh
+$ pre-commit try-repo --verbose <PATH TO CODING-STYLE> <HOOK ID>  --files <FILE>
 # Using black
-pre-commit try-repo --verbose ../coding-style black --files main.py
+$ pre-commit try-repo --verbose ../coding-style black --files main.py
 ```
 
 ## License
