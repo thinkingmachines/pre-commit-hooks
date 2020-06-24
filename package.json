@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "eslint": "6.8.0",
-    "prettier-standard": "16.2.1",
+    "prettier-standard": "16.3.0",
     "typescript": "3.8.3"
   }
 }
