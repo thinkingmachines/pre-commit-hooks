@@ -26,7 +26,7 @@ depending on the language you are using.
 ```yaml
 repos:
 - repo: https://github.com/thinkingmachines/coding-style
-  rev: 2020.05.20.1
+  rev: 2020.07.10
   hooks: ...
 ```
 
@@ -64,24 +64,20 @@ hooks working together.
 
 ### JavaScript
 
+We rely on `prettier` for base coding style opinions.
+
 ```yaml
-  - id: prettier-standard
-  - id: eslint
+  - id: prettier
 ```
 
-By default, `eslint` will not work with `prettier-standard`. A starting configuration that would work can be found
-in `config/`. Copy `config/.eslintrc` to the root of your repo and add `additional_dependencies` to the
-`.pre-commit-config.yaml` file.
+Use `eslint` for project specific conventions. A starting configuration can
+be found in `config/`. Copy `config/.eslintrc` to the root of your repo and
+add `additional_dependencies` to the `.pre-commit-config.yaml` file.
 
 ```yaml
   - id: eslint
     additional_dependencies:
-      - 'eslint-config-standard@14.1.0'
-      - 'eslint-config-prettier@6.10.1'
-      - 'eslint-plugin-import@2.20.0'
-      - 'eslint-plugin-node@11.0.0'
-      - 'eslint-plugin-promise@4.2.1'
-      - 'eslint-plugin-standard@4.0.1'
+      - 'eslint-config-prettier@6.11.0'
 ```
 
 ### Go

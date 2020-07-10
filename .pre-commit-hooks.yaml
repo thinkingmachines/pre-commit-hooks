@@ -1,15 +1,17 @@
-- id: prettier-standard
-  name: prettier-standard
-  description: 'prettier and standard brought together'
-  entry: prettier-standard
+- id: prettier
+  name: prettier
+  description: 'Prettier is an opinionated code formatter.'
+  entry: prettier --write --list-different
   language: node
   files: (?i)\.(json|js|jsx|ts|tsx)$
+
 - id: eslint
   name: eslint
   description: 'Find and fix problems in your JavaScript code.'
   entry: eslint
   language: node
-  files: (?i)\.(json|js|jsx|ts|tsx)$
+  files: (?i)\.(js|jsx|ts|tsx)$
+
 - id: black
   name: black
   description: 'Black: The uncompromising Python code formatter'
@@ -18,6 +20,7 @@
   language_version: python3
   require_serial: true
   types: [python]
+
 - id: flake8
   name: flake8
   description: '`flake8` is a command-line utility for enforcing style consistency across Python projects.'
@@ -25,12 +28,14 @@
   language: python
   types: [python]
   require_serial: true
+
 - id: isort
   name: isort
   description: 'A Python utility / library to sort imports.'
   entry: isort
   language: python
   types: [python]
+
 - id: black-nb
   name: black-nb
   description: 'Black: The uncompromising Python code formatter for Jupyter notebooks'
@@ -40,6 +45,7 @@
   language_version: python3
   require_serial: true
   files: (?i)\.ipynb$
+
 - id: flake8-nb
   name: flake8-nb
   description: '`flake8_nb` is a command-line utility for enforcing style consistency across jupyter notebooks.'
@@ -47,6 +53,7 @@
   language: python
   files: (?i)\.ipynb$
   require_serial: true
+
 - id: gofmt
   name: gofmt
   description: 'Automatically formats Go source code. Go needs to be installed'
