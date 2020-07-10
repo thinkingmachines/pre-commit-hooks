@@ -1,7 +1,7 @@
 from setuptools import setup
 
-with open("requirements.txt") as requriements_file:
-    requirements = requriements_file.read().split("\n")
+with open("requirements.txt") as requirements_file:
+    requirements = requirements_file.read().split("\n")
 
 if __name__ == "__main__":
     setup(
