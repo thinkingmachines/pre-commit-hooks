@@ -26,7 +26,7 @@ depending on the language you are using.
 ```yaml
 repos:
 - repo: https://github.com/thinkingmachines/coding-style
-  rev: 2020.07.10
+  rev: 2020.09.11
   hooks: ...
 ```
 
