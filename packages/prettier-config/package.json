@@ -1,0 +1,14 @@
+{
+  "name": "@thinkingmachines/prettier-config",
+  "version": "0.0.0",
+  "description": "Thinking Machines prettier config",
+  "main": "index.json",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/thinkingmachines/coding-style.git",
+    "directory": "packages/prettier-config"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

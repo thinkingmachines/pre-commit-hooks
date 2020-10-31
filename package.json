@@ -1,0 +1,8 @@
+{
+  "name": "coding-style",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
