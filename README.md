@@ -23,117 +23,105 @@ $ pre-commit --version
 Create a `.pre-commit-config.yaml` file in your repo's root with the following contents
 depending on the language you are using.
 
-```yaml
-repos:
-- repo: https://github.com/thinkingmachines/coding-style
-  rev: 2020.09.11
-  hooks: ...
-```
-
-Add hooks depending on the languages you are using.
-
-## Available hooks
-
 ### Python
 
 ```yaml
-  - id: black
-  - id: flake8
-  - id: isort
+repos:
+  - repo: https://github.com/psf/black
+    rev: 20.8b1
+    hooks:
+      - id: black
+        language_version: python3
+  - repo: https://github.com/PyCQA/flake8
+    rev: 3.8.4
+    hooks:
+      - id: flake8
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.6.4
+    hooks:
+      - id: isort
 ```
 
-These 3 hooks default configuration conflict with each other. A simple configuration that works can be
-found in `config/`. Copy `config/.isort.cfg` and `config/.flake8` to the root of your repo to get
-these hooks working together.
+The default flake8 configuration conflicts black. A simple configuration that
+works can be found in [`.flake8`](.flake8). Copy it to the root of your repo
+to get these hooks working together.
 
 #### Notebook specific hooks
 
 You can add notebook specific hooks by using the following.
 
 ```yaml
-  - id: black-nb
-    additional_dependencies:
-      - 'black-nb==0.3.0'
-  - id: flake8-nb
-    additional_dependencies:
-      - 'flake8_nb==v0.1.4'
+  - repo: https://github.com/tomcatling/black-nb
+    rev: 0.3.0
+    hooks:
+      - id: black-nb
+  - repo: https://github.com/s-weigand/flake8-nb
+    rev: v0.2.5
+    hooks:
+      - id: flake8-nb
 ```
 
-Similar to previous hooks, you can copy `config/.flake8_nb` to the root of your repo to get these
-hooks working together.
+Similar to previous hooks, you can copy [`.flake8_nb`](.flake8_nb) to the
+root of your repo to get these hooks working together.
 
 ### JavaScript
 
-We rely on `prettier` for base coding style opinions.
+We use `prettier` for base coding style tweaked with some
+[standard](https://standardjs.com/)-ish configuration:
+[`.prettierrc`](.prettierrc).
 
 ```yaml
-  - id: prettier
+repos:
+  - repo: https://github.com/prettier/prettier
+    rev: 2.1.2
+    hooks:
+      - id: prettier
+        files: (?i)\.(json|js|jsx|ts|tsx)$
 ```
 
 Use `eslint` for project specific conventions. A starting configuration can
-be found in `config/`. Copy `config/.eslintrc` to the root of your repo and
-add `additional_dependencies` to the `.pre-commit-config.yaml` file.
+be found in [`.eslintrc`](.eslintrc). Copy it to the root of your repo and
+add `additional_dependencies` to the `.pre-commit-config.yaml` file as necessary.
 
 ```yaml
-  - id: eslint
-    additional_dependencies:
-      - 'eslint-config-prettier@6.11.0'
+repos:
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v7.12.1
+    hooks:
+      - id: eslint
+        files: (?i)\.(js|jsx|ts|tsx)$
+        additional_dependencies:
+          - 'eslint@7.12.1'
+          - 'eslint-config-prettier@6.15.0'
 ```
 
-### Go
-
-```yaml
-  - id: gofmt
-```
+Refer to the [ui-starter](https://github.com/thinkingmachines/ui-starter)
+template for React configurations.
 
 ## Setting Github Actions
 
-You can set up Github Action to check new pull requests follow the coding style by
-creating a `.github/workflows/pre-commit.yaml` file in your repo's root with the following content:
+You can set up Github Action to check new pull requests follow the coding
+style by creating a `.github/workflows/pre-commit.yaml` file in your repo's
+root with the following content:
 
 ```yaml
-name: pre-commit-checks
-on: [pull_request]
+name: pre-commit
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
 jobs:
-  pre-commit-checks:
+  pre-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Set up Python
-        uses: actions/setup-python@v1
+      - uses: actions/setup-python@v1
+      - uses: pre-commit/action@v2.0.0
         with:
-          python-version: 3.6
-      - uses: actions/cache@v2
-        name: Cache pip
-        with:
-          path: ~/.cache/pip
-          key: pre-commit-pip|${{ hashFiles('.pre-commit-config.yaml') }}
-      - name: Install dependencies
-        run: python -m pip install --upgrade pre-commit
-      - name: Cache pre-commit
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pre-commit
-          key: pre-commit-files|${{ hashFiles('.pre-commit-config.yaml') }}
-      - name: Run Pre-commit
-        run: pre-commit run --all-files --source origin/$BASE_BRANCH --origin HEAD
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 ```
-
-The code snippet can also be found [here](https://github.com/thinkingmachines/gh-actions/blob/master/.github/workflows/pre-commit.yaml)
-
-## Release
-
-This project follows [Calender Versioning](https://calver.org/).
-
-Create a release by tagging a commit with the current date using the following format:
-
-`YYYY.MM.DD` (example `2020.01.01`)
-
-An additional patch segment can be added for hot fixes:
-
-`YYYY.MM.DD.PATCH` (example `2020.01.01.1`)
 
 ## Contributing and Developing
 
@@ -144,15 +132,8 @@ $ git clone git@github.com:thinkingmachines/coding-style.git
 ```
 
 and create a new branch. We would appreciate suggestions for new pre-commit
-hooks to enforce or a review of our current hooks.
-
-You can test a new or existing hooks on an repo or file using the following command:
-
-```sh
-$ pre-commit try-repo --verbose <PATH TO CODING-STYLE> <HOOK ID>  --files <FILE>
-# Using black
-$ pre-commit try-repo --verbose ../coding-style black --files main.py
-```
+hooks to enforce or a review of our current recommended hooks and
+configuration.
 
 ## License
 
