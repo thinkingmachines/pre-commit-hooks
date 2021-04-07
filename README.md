@@ -40,6 +40,7 @@ repos:
     rev: 5.6.4
     hooks:
       - id: isort
+        args: ["--profile", "black"]
 ```
 
 The default flake8 configuration conflicts black. A simple configuration that
