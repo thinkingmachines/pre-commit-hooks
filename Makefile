@@ -1,5 +1,6 @@
 .PHONY: clean clean-test clean-pyc clean-build dev venv help requirements-dev.txt
 .DEFAULT_GOAL := help
+
 define BROWSER_PYSCRIPT
 import os, webbrowser, sys
 try:
@@ -39,7 +40,6 @@ requirements-dev.txt: requirements-dev.in ## create dev requirements
 	venv/bin/pip-compile -o requirements-dev.txt requirements-dev.in
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
-
 
 clean-build: ## remove build artifacts
 	rm -fr build/
