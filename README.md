@@ -40,7 +40,7 @@ repos:
     rev: 5.6.4
     hooks:
       - id: isort
-        args: ["--profile", "black"]
+        args: ['--profile', 'black']
 ```
 
 The default flake8 configuration conflicts black. A simple configuration that
@@ -52,14 +52,14 @@ to get these hooks working together.
 You can add notebook specific hooks by using the following.
 
 ```yaml
-  - repo: https://github.com/tomcatling/black-nb
-    rev: 0.3.0
-    hooks:
-      - id: black-nb
-  - repo: https://github.com/s-weigand/flake8-nb
-    rev: v0.2.5
-    hooks:
-      - id: flake8-nb
+- repo: https://github.com/tomcatling/black-nb
+  rev: 0.3.0
+  hooks:
+    - id: black-nb
+- repo: https://github.com/s-weigand/flake8-nb
+  rev: v0.2.5
+  hooks:
+    - id: flake8-nb
 ```
 
 Similar to previous hooks, you can copy [`.flake8_nb`](.flake8_nb) to the
@@ -98,6 +98,16 @@ repos:
 
 Refer to the [ui-starter](https://github.com/thinkingmachines/ui-starter)
 template for React configurations.
+
+### Security
+
+```yaml
+- repo: https://github.com/zricethezav/gitleaks
+  rev: v7.5.0
+  hooks:
+    - id: gitleaks
+      args: ['--verbose']
+```
 
 ## Setting Github Actions
 
