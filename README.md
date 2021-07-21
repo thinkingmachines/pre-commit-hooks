@@ -74,7 +74,7 @@ We use `prettier` for base coding style tweaked with some
 ```yaml
 repos:
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: 2.1.2
+    rev: v2.1.2
     hooks:
       - id: prettier
         files: (?i)\.(json|js|jsx|ts|tsx)$
